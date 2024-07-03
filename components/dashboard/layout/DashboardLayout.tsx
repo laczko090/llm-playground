@@ -3,6 +3,7 @@
 import { PropsWithChildren, useState } from "react";
 import Header from "./header/Header";
 import Sidebar from "./sidebar/Sidebar";
+import MobileMenu from "./mobileMenu/MobileMenu";
 
 const navItems = ["Overview", "Analytics", "Projects", "Tasks", "Settings"];
 
@@ -20,6 +21,11 @@ const DashboardLayout = ({ children }: PropsWithChildren) => {
       />
       <div className="flex flex-1 overflow-hidden">
         <Sidebar navItems={navItems} />
+        <MobileMenu
+          isOpen={isMobileMenuOpen}
+          navItems={navItems}
+          handleMenuOpen={setIsMobileMenuOpen}
+        />
         <main className="flex-1 overflow-y-auto bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6">
             {children}
